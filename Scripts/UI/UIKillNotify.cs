@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MultiplayerARPG
 {
     public class UIKillNotify : MonoBehaviour
     {
-        public Text textKillNotify;
+        public TextWrapper textKillNotify;
         public string formatKillNotify = "{0} kill {1} ({2})";
         public float showDuration = 3f;
         private float timeCount;
