@@ -36,14 +36,14 @@ namespace MultiplayerARPG
         {
             if (!IsServer)
                 return;
-            ServerSendPacket(connectionId, LiteNetLib.DeliveryMethod.Sequenced, hitToSomeoneNotifyMessageId);
+            ServerSendPacket(connectionId, LiteNetLib.DeliveryMethod.Unreliable, hitToSomeoneNotifyMessageId);
         }
 
         public void SendHitFromSomeoneNotify(long connectionId, Vector3 position, uint attackerId)
         {
             if (!IsServer)
                 return;
-            ServerSendPacket(connectionId, LiteNetLib.DeliveryMethod.Sequenced, hitFromSomeoneNotifyMessageId, (writer) =>
+            ServerSendPacket(connectionId, LiteNetLib.DeliveryMethod.Unreliable, hitFromSomeoneNotifyMessageId, (writer) =>
             {
                 writer.PutVector3(position);
                 writer.PutPackedUInt(attackerId);
