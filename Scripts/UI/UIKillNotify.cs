@@ -11,6 +11,11 @@ namespace MultiplayerARPG
         public float showDuration = 3f;
         private float timeCount;
 
+        private void Awake()
+        {
+            textKillNotify.gameObject.SetActive(false);
+        }
+
         private void Start()
         {
             BaseGameNetworkManager.Singleton.onKillNotify += KillNotify;
