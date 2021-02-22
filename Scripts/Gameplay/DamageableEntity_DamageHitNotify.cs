@@ -34,7 +34,8 @@ namespace MultiplayerARPG
                 if (attacker.Entity is BasePlayerCharacterEntity)
                     CurrentGameManager.SendHitToSomeoneNotify(attacker.GetConnectionId());
             }
-            CurrentGameManager.SendHitFromSomeoneNotify(ConnectionId, fromPosition, attackerId);
+            if (ConnectionId >= 0)
+                CurrentGameManager.SendHitFromSomeoneNotify(ConnectionId, fromPosition, attackerId);
         }
     }
 }
