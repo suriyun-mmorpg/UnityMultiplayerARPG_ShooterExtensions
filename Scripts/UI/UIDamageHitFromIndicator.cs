@@ -92,7 +92,7 @@ namespace MultiplayerARPG
 
         public void OnHitFromSomeoneNotify(Vector3 position, uint attackerId)
         {
-            if (indicatorUpdates.Count == 0)
+            if (indicatorUpdates.Count == 0 || attackerId == GameInstance.PlayingCharacterEntity.ObjectId)
                 return;
             indicatorUpdates[showedCount++].Show(showDuration, position);
             if (showedCount >= indicatorUpdates.Count)
