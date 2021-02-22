@@ -712,7 +712,7 @@ MonoBehaviour:
   uiSceneGameplayPrefab: {fileID: 114088817493988554, guid: 39a7ed7b2637f4e41a01701450c36252,
     type: 3}
   uiSceneGameplayMobilePrefab: {fileID: 0}
-  defaultControllerPrefab: {fileID: 114096437919969166, guid: 147be1283e4eb834d94ad1c905a031e7,
+  defaultControllerPrefab: {fileID: 114742108577203632, guid: 89d56097934a6434992026bb52c19036,
     type: 3}
   serverCharacterPrefab: {fileID: 114427175623056218, guid: 5d1fef0b895ca2a43899fb0236936a59,
     type: 3}
