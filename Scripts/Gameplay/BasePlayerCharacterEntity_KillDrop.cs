@@ -27,7 +27,7 @@ namespace MultiplayerARPG
             BaseSkill skill,
             short skillLevel)
         {
-            if (!this.IsDead())
+            if (!this.IsDead() || !CurrentGameInstance.turnOnKillDrop)
                 return;
             // Prepare droping items and clear items from character
             List<CharacterItem> droppingItems = new List<CharacterItem>();
@@ -41,7 +41,13 @@ namespace MultiplayerARPG
                 droppingItems.Add(SelectableWeaponSets[i].leftHand);
                 SelectableWeaponSets[i] = new EquipWeapons();
             }
+            // Instantiates corpse when there is an items only
+            if (droppingItems.Count == 0)
+                return;
             // Put dropping items to corpse
+            CorpseEntity corpse = Instantiate(CurrentGameInstance.corpseEntityPrefab, CacheTransform.position, CacheTransform.rotation);
+            corpse.Setup(this, droppingItems);
+            Manager.Assets.NetworkSpawn(corpse.gameObject);
         }
     }
 }
