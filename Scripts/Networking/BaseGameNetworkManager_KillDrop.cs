@@ -1,7 +1,6 @@
 ﻿using LiteNetLibManager;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MultiplayerARPG
 {
@@ -11,8 +10,8 @@ namespace MultiplayerARPG
         protected void RegisterCorpseEntityPrefab()
         {
             List<LiteNetLibIdentity> assets = new List<LiteNetLibIdentity>(Assets.spawnablePrefabs);
-            if (CurrentGameInstance.corpseEntityPrefab != null)
-                assets.Add(CurrentGameInstance.corpseEntityPrefab.Identity);
+            if (CurrentGameInstance.corpsePrefab != null)
+                assets.Add(CurrentGameInstance.corpsePrefab.Identity);
             Assets.spawnablePrefabs = assets.ToArray();
         }
     }

@@ -45,9 +45,7 @@ namespace MultiplayerARPG
             if (droppingItems.Count == 0)
                 return;
             // Put dropping items to corpse
-            CorpseEntity corpse = Instantiate(CurrentGameInstance.corpseEntityPrefab, CacheTransform.position, CacheTransform.rotation);
-            corpse.Setup(this, droppingItems);
-            Manager.Assets.NetworkSpawn(corpse.gameObject);
+            ItemsContainerEntity.DropItems(CurrentGameInstance.corpsePrefab, this, droppingItems);
         }
     }
 }
