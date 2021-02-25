@@ -31,7 +31,7 @@ namespace MultiplayerARPG
             if (attacker != null)
             {
                 attackerId = attacker.GetObjectId();
-                if (attacker.Entity is BasePlayerCharacterEntity)
+                if (attacker.Entity != Entity && (attacker.Entity is BasePlayerCharacterEntity))
                     CurrentGameManager.SendHitToSomeoneNotify(attacker.GetConnectionId());
             }
             if (ConnectionId >= 0)
