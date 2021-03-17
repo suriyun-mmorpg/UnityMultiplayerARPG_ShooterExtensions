@@ -31,7 +31,7 @@ namespace MultiplayerARPG
         {
             if (!IsServer)
                 return;
-            ServerSendPacketToAllConnections(LiteNetLib.DeliveryMethod.Sequenced, killNotifyMessageId, (writer) =>
+            ServerSendPacketToAllConnections(0, LiteNetLib.DeliveryMethod.Sequenced, killNotifyMessageId, (writer) =>
             {
                 writer.Put(killerName);
                 writer.Put(victimName);
