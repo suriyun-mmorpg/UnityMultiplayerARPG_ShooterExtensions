@@ -31,15 +31,21 @@ namespace MultiplayerARPG
                 return;
             // Prepare droping items and clear items from character
             List<CharacterItem> droppingItems = new List<CharacterItem>();
-            droppingItems.AddRange(EquipItems);
-            EquipItems.Clear();
-            droppingItems.AddRange(NonEquipItems);
-            NonEquipItems.Clear();
-            for (int i = 0; i < SelectableWeaponSets.Count; ++i)
+            if (CurrentGameInstance.killDropEquipItems)
             {
-                droppingItems.Add(SelectableWeaponSets[i].rightHand);
-                droppingItems.Add(SelectableWeaponSets[i].leftHand);
-                SelectableWeaponSets[i] = new EquipWeapons();
+                droppingItems.AddRange(EquipItems);
+                EquipItems.Clear();
+                for (int i = 0; i < SelectableWeaponSets.Count; ++i)
+                {
+                    droppingItems.Add(SelectableWeaponSets[i].rightHand);
+                    droppingItems.Add(SelectableWeaponSets[i].leftHand);
+                    SelectableWeaponSets[i] = new EquipWeapons();
+                }
+            }
+            if (CurrentGameInstance.killDropNonEquipItems)
+            {
+                droppingItems.AddRange(NonEquipItems);
+                NonEquipItems.Clear();
             }
             // Instantiates corpse when there is an items only
             if (droppingItems.Count == 0)

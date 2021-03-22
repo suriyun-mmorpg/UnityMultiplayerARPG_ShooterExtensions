@@ -8,6 +8,8 @@ namespace MultiplayerARPG
     {
         [Header("Shooter Extensions - Kill Drop")]
         public bool turnOnKillDrop;
+        public bool killDropEquipItems = true;
+        public bool killDropNonEquipItems = true;
         public ItemsContainerEntity corpsePrefab;
     }
 }
