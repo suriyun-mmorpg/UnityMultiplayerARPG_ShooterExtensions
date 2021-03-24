@@ -48,7 +48,15 @@ namespace MultiplayerARPG
                 NonEquipItems.Clear();
             }
             // Instantiates corpse when there is an items only
-            if (droppingItems.Count == 0)
+            int dropCount = 0;
+            for (int i = droppingItems.Count - 1; i >= 0; --i)
+            {
+                if (droppingItems[i].NotEmptySlot())
+                    ++dropCount;
+                else
+                    droppingItems.RemoveAt(i);
+            }
+            if (dropCount == 0)
                 return;
             // Put dropping items to corpse
             ItemsContainerEntity.DropItems(CurrentGameInstance.corpsePrefab, this, droppingItems);
