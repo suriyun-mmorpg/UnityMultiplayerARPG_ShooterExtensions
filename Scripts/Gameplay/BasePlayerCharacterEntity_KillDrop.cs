@@ -59,7 +59,7 @@ namespace MultiplayerARPG
             if (dropCount == 0)
                 return;
             // Put dropping items to corpse
-            ItemsContainerEntity.DropItems(CurrentGameInstance.corpsePrefab, this, droppingItems);
+            ItemsContainerEntity.DropItems(CurrentGameInstance.corpsePrefab, this, droppingItems, null);
         }
     }
 }
