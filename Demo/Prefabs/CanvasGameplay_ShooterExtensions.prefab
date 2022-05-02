@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114117592907527930}
   - component: {fileID: 114460351426420406}
   - component: {fileID: 114088817493988554}
+  - component: {fileID: 3122591735980182039}
   m_Layer: 5
   m_Name: CanvasGameplay_ShooterExtensions
   m_TagString: Untagged
@@ -270,6 +271,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3122591735980182039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164220226400930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69d5067b4b8c6f41880ad1436d30f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiLocalChatMessagePrefab: {fileID: 8230439767929373467, guid: e03cb679b77fa1a4f9b7c459c6dac13b,
+    type: 3}
+  uiGlobalChatMessagePrefab: {fileID: 8230439767929373467, guid: 1d44c72533959cf469a3c0f3b6e4875b,
+    type: 3}
+  uiWhisperChatMessagePrefab: {fileID: 8230439767929373467, guid: c8b48ef4c9600ec4f9a84285dba8eb8a,
+    type: 3}
+  uiPartyChatMessagePrefab: {fileID: 8230439767929373467, guid: de93725987b1aa94da4493821740f28f,
+    type: 3}
+  uiGuildChatMessagePrefab: {fileID: 8230439767929373467, guid: e7981257896674f4b810287c93eb13d1,
+    type: 3}
+  visibleDuration: 3
 --- !u!1 &1979434012980664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,12 +1377,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa31f76a78d71d41ab4fbf8dbecc3a8, type: 3}
---- !u!224 &224100069548900120 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1606900689887427908, guid: 9fa31f76a78d71d41ab4fbf8dbecc3a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1535994080973800028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &114864523982907466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1497700689487358486, guid: 9fa31f76a78d71d41ab4fbf8dbecc3a8,
@@ -1371,6 +1389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505cca7188cbb3940b27cb0cf0d34352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &224100069548900120 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1606900689887427908, guid: 9fa31f76a78d71d41ab4fbf8dbecc3a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535994080973800028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1819351566869651362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2946,6 +2970,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b16fe6db126214294e7b5e4d9d6267, type: 3}
+--- !u!224 &224679493309309640 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5846767262356847753, guid: 15b16fe6db126214294e7b5e4d9d6267,
+    type: 3}
+  m_PrefabInstance: {fileID: 5926133580650356289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7834150367095367238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4505188797576296455, guid: 15b16fe6db126214294e7b5e4d9d6267,
@@ -2958,12 +2988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8c6614f5736a844b3d75d7cf2f49e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &224679493309309640 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5846767262356847753, guid: 15b16fe6db126214294e7b5e4d9d6267,
-    type: 3}
-  m_PrefabInstance: {fileID: 5926133580650356289}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5970594301038948783
 PrefabInstance:
   m_ObjectHideFlags: 0
