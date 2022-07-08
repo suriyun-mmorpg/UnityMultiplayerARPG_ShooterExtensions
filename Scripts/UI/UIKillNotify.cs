@@ -38,7 +38,7 @@ namespace MultiplayerARPG
             if (GameInstance.Items.ContainsKey(weaponId))
                 textKillNotify.text = string.Format(formatKillNotify, killerName, victimName, GameInstance.Items[weaponId].Title);
             else
-                textKillNotify.text = string.Format(formatKillNotify, killerName, victimName);
+                textKillNotify.text = string.Format(formatKillWithUnknowWeapon, killerName, victimName);
             textKillNotify.gameObject.SetActive(true);
         }
     }
