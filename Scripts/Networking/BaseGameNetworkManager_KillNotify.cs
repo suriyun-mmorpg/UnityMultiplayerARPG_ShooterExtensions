@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LiteNetLib;
+using UnityEngine;
 
 namespace MultiplayerARPG
 {
@@ -6,6 +7,9 @@ namespace MultiplayerARPG
     {
         [Header("Kill notify")]
         public ushort killNotifyMessageId = 2000;
+        public byte killNotifyDataChannel = 0;
+        public DeliveryMethod killNotifyDeliveryMethod = DeliveryMethod.Sequenced;
+
         /// <summary>
         /// Killer Name, Victim Name, Weapon ID, Skill ID, Skill Level
         /// </summary>
@@ -29,7 +33,7 @@ namespace MultiplayerARPG
         {
             if (!IsServer)
                 return;
-            ServerSendPacketToAllConnections(0, LiteNetLib.DeliveryMethod.Sequenced, killNotifyMessageId, (writer) =>
+            ServerSendPacketToAllConnections(0, killNotifyDeliveryMethod, killNotifyMessageId, (writer) =>
             {
                 writer.Put(killerName);
                 writer.Put(victimName);

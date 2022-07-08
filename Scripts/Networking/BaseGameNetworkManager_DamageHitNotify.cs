@@ -1,18 +1,27 @@
-﻿using LiteNetLib.Utils;
+﻿using LiteNetLib;
+using LiteNetLib.Utils;
 using UnityEngine;
 
 namespace MultiplayerARPG
 {
     public partial class BaseGameNetworkManager
     {
-        [Header("Damage hit notify")]
+        [Header("Damage hit to someone notify")]
         public ushort hitToSomeoneNotifyMessageId = 2001;
+        public byte hitToSomeoneNotifyDataChannel = 0;
+        public DeliveryMethod hitToSomeoneNotifyDeliveryMethod = DeliveryMethod.Unreliable;
+
+        [Header("Damage hit from someone notify")]
         public ushort hitFromSomeoneNotifyMessageId = 2002;
+        public byte hitFromSomeoneNotifyDataChannel = 0;
+        public DeliveryMethod hitFromSomeoneNotifyDeliveryMethod = DeliveryMethod.Unreliable;
+
         public System.Action onHitToSomeoneNotify;
         /// <summary>
         /// Position, attacker's object ID
         /// </summary>
         public System.Action<Vector3, uint> onHitFromSomeoneNotify;
+
         [DevExtMethods("RegisterClientMessages")]
         public void RegisterClientMessages_DamageHitNotify()
         {
@@ -34,14 +43,14 @@ namespace MultiplayerARPG
         {
             if (!IsServer)
                 return;
-            ServerSendPacket(connectionId, 0, LiteNetLib.DeliveryMethod.Unreliable, hitToSomeoneNotifyMessageId);
+            ServerSendPacket(connectionId, hitToSomeoneNotifyDataChannel, hitToSomeoneNotifyDeliveryMethod, hitToSomeoneNotifyMessageId);
         }
 
         public void SendHitFromSomeoneNotify(long connectionId, Vector3 position, uint attackerId)
         {
             if (!IsServer)
                 return;
-            ServerSendPacket(connectionId, 0, LiteNetLib.DeliveryMethod.Unreliable, hitFromSomeoneNotifyMessageId, (writer) =>
+            ServerSendPacket(connectionId, hitFromSomeoneNotifyDataChannel, hitFromSomeoneNotifyDeliveryMethod, hitFromSomeoneNotifyMessageId, (writer) =>
             {
                 writer.PutVector3(position);
                 writer.PutPackedUInt(attackerId);
