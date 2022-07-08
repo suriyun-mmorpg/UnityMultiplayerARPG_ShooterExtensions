@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MultiplayerARPG
 {
@@ -8,6 +6,7 @@ namespace MultiplayerARPG
     {
         public TextWrapper textKillNotify;
         public string formatKillNotify = "{0} kill {1} ({2})";
+        public string formatKillWithUnknowWeapon = "{0} kill {1}";
         public float showDuration = 3f;
         private float timeCount;
 
@@ -35,10 +34,11 @@ namespace MultiplayerARPG
 
         public void KillNotify(string killerName, string victimName, int weaponId, int skillId, short skillLevel)
         {
-            if (!GameInstance.Items.ContainsKey(weaponId))
-                return;
             timeCount = 0;
-            textKillNotify.text = string.Format(formatKillNotify, killerName, victimName, GameInstance.Items[weaponId].Title);
+            if (GameInstance.Items.ContainsKey(weaponId))
+                textKillNotify.text = string.Format(formatKillNotify, killerName, victimName, GameInstance.Items[weaponId].Title);
+            else
+                textKillNotify.text = string.Format(formatKillNotify, killerName, victimName);
             textKillNotify.gameObject.SetActive(true);
         }
     }
