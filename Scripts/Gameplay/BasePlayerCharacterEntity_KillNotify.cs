@@ -24,7 +24,8 @@ namespace MultiplayerARPG
             int damage,
             CharacterItem weapon,
             BaseSkill skill,
-            short skillLevel)
+            short skillLevel,
+            CharacterBuff buff)
         {
             if (!this.IsDead())
                 return;

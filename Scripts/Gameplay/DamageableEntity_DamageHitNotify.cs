@@ -24,7 +24,8 @@ namespace MultiplayerARPG
             int damage,
             CharacterItem weapon,
             BaseSkill skill,
-            short skillLevel)
+            short skillLevel,
+            CharacterBuff buff)
         {
             uint attackerId = 0;
             if (attacker != null)
