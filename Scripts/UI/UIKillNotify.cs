@@ -32,7 +32,7 @@ namespace MultiplayerARPG
                 textKillNotify.gameObject.SetActive(false);
         }
 
-        public void KillNotify(string killerName, string victimName, int weaponId, int skillId, short skillLevel)
+        public void KillNotify(string killerName, string victimName, int weaponId, int skillId, int skillLevel)
         {
             timeCount = 0;
             if (GameInstance.Items.ContainsKey(weaponId))

@@ -13,7 +13,7 @@ namespace MultiplayerARPG
         /// <summary>
         /// Killer Name, Victim Name, Weapon ID, Skill ID, Skill Level
         /// </summary>
-        public System.Action<string, string, int, int, short> onKillNotify;
+        public System.Action<string, string, int, int, int> onKillNotify;
         [DevExtMethods("RegisterClientMessages")]
         public void RegisterClientMessages_KillNotify()
         {
@@ -29,7 +29,7 @@ namespace MultiplayerARPG
             });
         }
 
-        public void SendKillNotify(string killerName, string victimName, int weaponId, int skillId, short skillLevel)
+        public void SendKillNotify(string killerName, string victimName, int weaponId, int skillId, int skillLevel)
         {
             if (!IsServer)
                 return;
