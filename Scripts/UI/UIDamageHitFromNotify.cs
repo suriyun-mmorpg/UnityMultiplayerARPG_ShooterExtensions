@@ -26,7 +26,7 @@ namespace MultiplayerARPG
                 if (countDown > 0f)
                 {
                     countDown -= deltaTime;
-                    if (BasePlayerCharacterController.OwningCharacter != null)
+                    if (GameInstance.PlayingCharacterEntity != null)
                     {
                         canvasGroup.alpha = countDown / duration;
                         indicator.gameObject.SetActive(true);

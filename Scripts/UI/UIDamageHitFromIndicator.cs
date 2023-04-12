@@ -27,11 +27,11 @@ namespace MultiplayerARPG
                 if (countDown > 0f)
                 {
                     countDown -= deltaTime;
-                    if (BasePlayerCharacterController.OwningCharacter != null)
+                    if (GameInstance.PlayingCharacterEntity != null)
                     {
                         // Set rotation
                         Vector3 characterBackward = -Camera.main.transform.forward;
-                        Vector3 characterPosition = BasePlayerCharacterController.OwningCharacter.EntityTransform.position;
+                        Vector3 characterPosition = GameInstance.PlayingCharacterEntity.EntityTransform.position;
                         Vector3 hitDirection = hitFromPosition - characterPosition;
                         hitDirection.y = 0;
                         hitDirection.Normalize();
