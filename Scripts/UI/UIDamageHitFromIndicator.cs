@@ -30,10 +30,12 @@ namespace MultiplayerARPG
                     if (BasePlayerCharacterController.OwningCharacter != null)
                     {
                         // Set rotation
-                        Vector3 cameraBackward = -Camera.main.transform.forward;
+                        Vector3 characterBackward = -Camera.main.transform.forward;
                         Vector3 characterPosition = BasePlayerCharacterController.OwningCharacter.EntityTransform.position;
-                        Vector3 hitDirection = (hitFromPosition - characterPosition).normalized;
-                        float angle = Vector3.SignedAngle(cameraBackward, hitDirection, Vector3.up);
+                        Vector3 hitDirection = hitFromPosition - characterPosition;
+                        hitDirection.y = 0;
+                        hitDirection.Normalize();
+                        float angle = Vector3.SignedAngle(characterBackward, hitDirection, Vector3.up);
                         indicator.localRotation = Quaternion.Euler(0, 0, -angle);
                         canvasGroup.alpha = countDown / duration;
                         indicator.gameObject.SetActive(true);
