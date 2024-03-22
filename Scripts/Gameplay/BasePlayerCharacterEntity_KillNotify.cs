@@ -35,7 +35,7 @@ namespace MultiplayerARPG
             {
                 // Notify
                 BasePlayerCharacterEntity playerAttacker = attacker.Entity as BasePlayerCharacterEntity;
-                var weaponId = weapon != null ? weapon.dataId : 0;
+                var weaponId = weapon.dataId;
                 var skillId = skill != null ? skill.DataId : 0;
                 CurrentGameManager.SendKillNotify(playerAttacker.CharacterName, CharacterName, weaponId, skillId, skillLevel);
             }
