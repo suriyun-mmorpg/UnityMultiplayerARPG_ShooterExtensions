@@ -18,9 +18,9 @@ namespace MultiplayerARPG
 
         public System.Action onHitToSomeoneNotify;
         /// <summary>
-        /// Position, attacker's object ID
+        /// Position, attacker's object ID, is damage over time ?
         /// </summary>
-        public System.Action<Vector3, uint> onHitFromSomeoneNotify;
+        public System.Action<Vector3, uint, bool> onHitFromSomeoneNotify;
 
         [DevExtMethods("RegisterClientMessages")]
         public void RegisterClientMessages_DamageHitNotify()
@@ -34,8 +34,9 @@ namespace MultiplayerARPG
             {
                 var position = messageHandler.Reader.GetVector3();
                 var attackerId = messageHandler.Reader.GetPackedUInt();
+                var isDamageOverTime = messageHandler.Reader.GetBool();
                 if (onHitFromSomeoneNotify != null)
-                    onHitFromSomeoneNotify.Invoke(position, attackerId);
+                    onHitFromSomeoneNotify.Invoke(position, attackerId, isDamageOverTime);
             });
         }
 
@@ -46,7 +47,7 @@ namespace MultiplayerARPG
             ServerSendPacket(connectionId, hitToSomeoneNotifyDataChannel, hitToSomeoneNotifyDeliveryMethod, hitToSomeoneNotifyMessageId);
         }
 
-        public void SendHitFromSomeoneNotify(long connectionId, Vector3 position, uint attackerId)
+        public void SendHitFromSomeoneNotify(long connectionId, Vector3 position, uint attackerId, bool isDamageOverTime)
         {
             if (!IsServer)
                 return;
@@ -54,6 +55,7 @@ namespace MultiplayerARPG
             {
                 writer.PutVector3(position);
                 writer.PutPackedUInt(attackerId);
+                writer.Put(isDamageOverTime);
             });
         }
     }

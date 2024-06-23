@@ -81,7 +81,7 @@ namespace MultiplayerARPG
             }
         }
 
-        public void OnHitFromSomeoneNotify(Vector3 position, uint attackerId)
+        public void OnHitFromSomeoneNotify(Vector3 position, uint attackerId, bool isDamageOverTime)
         {
             if (indicatorUpdates.Count == 0)
                 return;

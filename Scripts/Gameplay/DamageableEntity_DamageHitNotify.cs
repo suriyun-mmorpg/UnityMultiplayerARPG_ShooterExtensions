@@ -36,7 +36,9 @@ namespace MultiplayerARPG
                     CurrentGameManager.SendHitToSomeoneNotify(attacker.GetConnectionId());
             }
             if (ConnectionId >= 0)
-                CurrentGameManager.SendHitFromSomeoneNotify(ConnectionId, fromPosition, attackerId);
+            {
+                CurrentGameManager.SendHitFromSomeoneNotify(ConnectionId, fromPosition, attackerId, isDamageOverTime);
+            }
         }
     }
 }
