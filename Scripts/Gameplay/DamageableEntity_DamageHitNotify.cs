@@ -1,4 +1,5 @@
 ﻿using Insthync.DevExtension;
+using LiteNetLibManager;
 using UnityEngine;
 
 namespace MultiplayerARPG
@@ -20,7 +21,7 @@ namespace MultiplayerARPG
         private void OnReceivedDamage_DamageHitNotify(
             HitBoxPosition position,
             Vector3 fromPosition,
-            IGameEntity attacker,
+            EntityInfo instigator,
             CombatAmountType combatAmountType,
             int damage,
             CharacterItem weapon,
@@ -30,11 +31,11 @@ namespace MultiplayerARPG
             bool isDamageOverTime)
         {
             uint attackerId = 0;
-            if (attacker != null)
+            if (instigator != null)
             {
-                attackerId = attacker.GetObjectId();
-                if (attackerId != ObjectId && (attacker.Entity is BasePlayerCharacterEntity))
-                    CurrentGameManager.SendHitToSomeoneNotify(attacker.GetConnectionId());
+                attackerId = instigator.ObjectId;
+                if (attackerId != ObjectId && instigator.Type == EntityTypes.Player && Manager.Assets.TryGetSpawnedObject(attackerId, out LiteNetLibIdentity attackerIdentity))
+                    CurrentGameManager.SendHitToSomeoneNotify(attackerIdentity.ConnectionId);
             }
             if (ConnectionId >= 0)
             {

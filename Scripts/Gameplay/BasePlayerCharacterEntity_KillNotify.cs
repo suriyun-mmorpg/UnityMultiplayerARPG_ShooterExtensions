@@ -20,7 +20,7 @@ namespace MultiplayerARPG
         private void OnReceivedDamage_KillNotify(
             HitBoxPosition position,
             Vector3 fromPosition,
-            IGameEntity attacker,
+            EntityInfo instigator,
             CombatAmountType combatAmountType,
             int damage,
             CharacterItem weapon,
@@ -32,14 +32,12 @@ namespace MultiplayerARPG
             if (!this.IsDead())
                 return;
             // Will notify only when character killed by player's character
-            if (attacker != null && attacker.Entity is BasePlayerCharacterEntity)
-            {
-                // Notify
-                BasePlayerCharacterEntity playerAttacker = attacker.Entity as BasePlayerCharacterEntity;
-                var weaponId = weapon.dataId;
-                var skillId = skill != null ? skill.DataId : 0;
-                CurrentGameManager.SendKillNotify(playerAttacker.CharacterName, CharacterName, weaponId, skillId, skillLevel);
-            }
+            if (instigator == null || instigator.Type != EntityTypes.Player || !instigator.TryGetEntity(out BasePlayerCharacterEntity playerAttacker))
+                return;
+            // Notify
+            var weaponId = weapon.dataId;
+            var skillId = skill != null ? skill.DataId : 0;
+            CurrentGameManager.SendKillNotify(playerAttacker.CharacterName, CharacterName, weaponId, skillId, skillLevel);
         }
     }
 }
