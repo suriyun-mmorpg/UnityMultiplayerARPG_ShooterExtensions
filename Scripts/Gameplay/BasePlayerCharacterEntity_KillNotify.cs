@@ -18,6 +18,7 @@ namespace MultiplayerARPG
         }
 
         private void OnReceivedDamage_KillNotify(
+            DamageableEntity target,
             HitBoxPosition position,
             Vector3 fromPosition,
             EntityInfo instigator,
